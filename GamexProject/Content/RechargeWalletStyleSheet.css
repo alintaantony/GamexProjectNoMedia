@@ -1,0 +1,91 @@
+﻿body {
+    margin: 0;
+    background-image: url(../Images/RechargeWalletImage.jpg);
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.RechargeWalletBox {
+    width: 320px;
+    height: 300px;
+    background-color: black;
+    color: whitesmoke;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+#heading {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    font-size: 15px;
+    color: lightgrey;
+}
+
+.RechargeWalletBox input {
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    width: 100%;
+    color: lightgrey;
+    font-family: "sans-seriff";
+}
+
+#WalletRechargeButton {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #333;
+    color: whitesmoke;
+    font-size: 15px;
+    border-radius: 20px;
+    font-family: "MyCustomFont";
+    border: 1px solid whitesmoke;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    #WalletRechargeButton:hover {
+        cursor: pointer;
+        background-color: grey;
+        color: black;
+    }
+
+.text-danger {
+    color: indianred;
+    font-size: 12px;
+}
+
+.registrationBox a {
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+#notifMessage {
+    color: indianred;
+    font-size: 12px;
+}
+#WalletBalanceMessage {
+    background-color: black;
+    color: whitesmoke;
+    width: 300px;
+    font-size: 20px;
+    font-family: Tahoma;
+}

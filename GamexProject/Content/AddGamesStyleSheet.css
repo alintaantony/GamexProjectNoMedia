@@ -1,0 +1,80 @@
+﻿body {
+    margin: 0;
+    background-image: url(../Images/AddGameImage.jpg);
+    background-color: grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/*.background {
+    background-image: url(../Images/AddGameImage.jpg);
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}*/
+
+.addgameBox {
+    width: 320px;
+    height: 600px;
+    background-color: black;
+    color: whitesmoke;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+#heading {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    font-size: 15px;
+    color: lightgrey;
+}
+
+.addgameBox input {
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    width: 100%;
+    color: lightgrey;
+    font-family: "sans-seriff";
+}
+
+#addgameButton {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #333;
+    color: whitesmoke;
+    font-size: 15px;
+    border-radius: 20px;
+    font-family: "MyCustomFont";
+    border: 1px solid whitesmoke;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    #addgameButton:hover {
+        cursor: pointer;
+        background-color: grey;
+        color: black;
+    }
+
+.text-danger {
+    color: indianred;
+    font-size: 12px;
+}
+
+

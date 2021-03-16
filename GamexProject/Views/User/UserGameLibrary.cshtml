@@ -1,0 +1,21 @@
+﻿
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/UserGameLibraryStyleSheet.css" rel="stylesheet" />
+<div class="UserGamesBox">
+    @foreach (var gameName in ViewBag.GamesNameList)
+    {
+        <div id="userGamesItems">
+        <span> @gameName</span>
+        <br />
+        </div>
+    }
+
+<br />
+<div>
+@Html.ActionLink("Sell Games","SellGames","User")
+</div>
+    </div>
+

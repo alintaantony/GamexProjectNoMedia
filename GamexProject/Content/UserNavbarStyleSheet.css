@@ -1,0 +1,55 @@
+﻿@font-face {
+    font-family: 'MyCustomFont';
+    src: url(../Fonts/VerminVibesV-Zlg3.ttf);
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'PopFont';
+    src: url(~/Fonts/PRINP___.ttf);
+    font-style: normal;
+    font-weight: 100;
+}
+
+
+html, body 
+{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+
+
+.NavBar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 65px;
+    background-size: cover;
+}
+
+.NavBarElement {
+    float: left;
+}
+.NavBarElement a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+    .NavBarElement a:hover {
+        background-color: #111;
+    }
+

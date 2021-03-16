@@ -1,0 +1,34 @@
+﻿@model GamexProject.Models.ViewModels.SellGameViewModel
+
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/SellGamesStyleSheet.css" rel="stylesheet" />
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sellGameBox">
+        <h2 id="heading">Sell Games</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.GameId, ViewBag.sellGamesDropDownList as SelectList, "Select Game To Sell",new { required = "required" })
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sell Game" id="sellGameButton" />
+            </div>
+        </div>
+        </div>
+}
+<div class="MessageBox">
+    <div id="SoldMesage">
+        @ViewBag.Message
+    </div>
+    <br />
+    <div id="WalletBallanceMessage">
+        @ViewBag.WalletBalance
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿body {
+    margin: 0;
+    background-color: black;
+    background-image: url(../Images/MessageBoxImage.jpg);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.MessageBox
+{
+    font-family:Tahoma;
+    text-align:center;
+    width:450px;
+    height:200px;
+    border:2px solid black;
+    color:whitesmoke;
+    font-size:30px;
+    margin:30px;
+    padding:30px;
+    font-family:'Comic Sans MS';
+
+}
+    .MessageBox a {
+        font-size: 30px;
+        line-height: 20px;
+        color: darkgrey;
+        font-family: sans-serif;
+    }

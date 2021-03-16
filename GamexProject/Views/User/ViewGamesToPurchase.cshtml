@@ -1,0 +1,58 @@
+﻿@model IEnumerable<GamexProject.Models.GameDetail>
+<link href="~/Content/ViewGamesToPurchaseStyleSheet.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="SearchBarBox">
+    <label>Enter Game Genre To Search : </label>
+    <input type="text" id="gameTextSearch" placeholder="Enter Game Genre" />
+
+    <div class="ViewGamesToPurchaseBox">
+        <table class="tableOfViewGamesToPurchase">
+            <tr>
+                <th>@Html.Label("Game Name ")</th>
+                <th>@Html.Label("Game Genre ")</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.GameName)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.GameGenre)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("View Game Details", "PurchaseGame", "User", new { gameID = item.GameId }, null)
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#gameTextSearch").on("keyup", function () {
+        var enteredText = $(this).val();
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var id = $(this).find("td:nth-child(2)").text();
+                if (id.indexOf(enteredText) !== 0 && id.toLowerCase().indexOf(enteredText.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+

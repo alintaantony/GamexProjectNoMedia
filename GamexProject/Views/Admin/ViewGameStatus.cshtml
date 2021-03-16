@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GamexProject.Models.GameDetail>
+
+@{
+    Html.RenderPartial("_AdminNavBar");
+}
+<br />
+<br />
+<br />
+<br />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewGameStatus</title>
+    <link href="~/Content/ViewGameStatusAdminStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="ViewGameStatusBox">
+        <table class="tableOfViewGameStatus">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GameName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GameGenre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GamePurchaseCount)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GameName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GameGenre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamePurchaseCount)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        <div >
+            @ViewBag.Message
+        </div>
+    </div>
+</body>
+</html>

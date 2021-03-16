@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc6c398a2abb4c08be0c8fece969d375" Name="Diagram1">
+        <EntityTypeShape EntityType="GamexDatabaseModel.DlcDetail" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamexDatabaseModel.GameDetail" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamexDatabaseModel.PurchasedDlcDetail" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamexDatabaseModel.PurchasedGameDetail" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamexDatabaseModel.UserDetail" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="GamexDatabaseModel.FK__DlcDetail__GameI__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="GamexDatabaseModel.FK__Purchased__DlcId__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="GamexDatabaseModel.FK__Purchased__GameI__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="GamexDatabaseModel.FK__Purchased__Usern__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="GamexDatabaseModel.FK__Purchased__Usern__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

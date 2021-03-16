@@ -1,0 +1,17 @@
+﻿
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/UserDlcLibraryStyleSheet.css" rel="stylesheet" />
+<div class="UserDlcBox">
+    @foreach (var dlcItem in ViewBag.DlcNameList)
+    {
+        <div id="UserDlcItems">
+            <span>@dlcItem</span>
+            <br />
+        </div>
+    }
+</div>
+
+

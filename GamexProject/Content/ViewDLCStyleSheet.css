@@ -1,0 +1,17 @@
+﻿body {
+    margin:0;
+
+}
+#DlcItems
+{
+    border:2px solid black;
+    text-align:center;
+    font-family:Tahoma;
+    padding:10px;
+    font-size:20px;
+}
+.ViewDlcBox a
+{
+    color:darkgrey;
+    text-decoration:none;
+}

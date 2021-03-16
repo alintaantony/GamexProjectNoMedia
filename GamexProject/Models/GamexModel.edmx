@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GamexDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DlcDetails">
+          <Key>
+            <PropertyRef Name="DlcId" />
+          </Key>
+          <Property Name="DlcId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DlcName" Type="varchar" MaxLength="50" />
+          <Property Name="DlcPrice" Type="float" />
+          <Property Name="DlcResaleValue" Type="float" />
+          <Property Name="DlcPurchaseCount" Type="int" />
+          <Property Name="GameId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GameDetails">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="50" />
+          <Property Name="GameGenre" Type="varchar" MaxLength="50" />
+          <Property Name="GamePrice" Type="float" />
+          <Property Name="GameResaleValue" Type="float" />
+          <Property Name="GamePurchaseCount" Type="int" />
+          <Property Name="GameDescription" Type="varchar(max)" />
+          <Property Name="GameImagePath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PurchasedDlcDetails">
+          <Key>
+            <PropertyRef Name="PDiD" />
+          </Key>
+          <Property Name="PDiD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DlcId" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="InLibraryDlcStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="PurchasedGameDetails">
+          <Key>
+            <PropertyRef Name="PGiD" />
+          </Key>
+          <Property Name="PGiD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameId" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="InLibraryGameStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserFullName" Type="varchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="50" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" />
+          <Property Name="Wallet" Type="float" />
+          <Property Name="UserThreatLevel" Type="int" />
+          <Property Name="UserBanStatus" Type="int" />
+        </EntityType>
+        <Association Name="FK__DlcDetail__GameI__2B3F6F97">
+          <End Role="GameDetails" Type="Self.GameDetails" Multiplicity="0..1" />
+          <End Role="DlcDetails" Type="Self.DlcDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDetails">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="DlcDetails">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__DlcId__31EC6D26">
+          <End Role="DlcDetails" Type="Self.DlcDetails" Multiplicity="0..1" />
+          <End Role="PurchasedDlcDetails" Type="Self.PurchasedDlcDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DlcDetails">
+              <PropertyRef Name="DlcId" />
+            </Principal>
+            <Dependent Role="PurchasedDlcDetails">
+              <PropertyRef Name="DlcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__GameI__2E1BDC42">
+          <End Role="GameDetails" Type="Self.GameDetails" Multiplicity="0..1" />
+          <End Role="PurchasedGameDetails" Type="Self.PurchasedGameDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDetails">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="PurchasedGameDetails">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__Usern__2F10007B">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+          <End Role="PurchasedGameDetails" Type="Self.PurchasedGameDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PurchasedGameDetails">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__Usern__32E0915F">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+          <End Role="PurchasedDlcDetails" Type="Self.PurchasedDlcDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PurchasedDlcDetails">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamexDatabaseModelStoreContainer">
+          <EntitySet Name="DlcDetails" EntityType="Self.DlcDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameDetails" EntityType="Self.GameDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchasedDlcDetails" EntityType="Self.PurchasedDlcDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchasedGameDetails" EntityType="Self.PurchasedGameDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DlcDetail__GameI__2B3F6F97" Association="Self.FK__DlcDetail__GameI__2B3F6F97">
+            <End Role="GameDetails" EntitySet="GameDetails" />
+            <End Role="DlcDetails" EntitySet="DlcDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__DlcId__31EC6D26" Association="Self.FK__Purchased__DlcId__31EC6D26">
+            <End Role="DlcDetails" EntitySet="DlcDetails" />
+            <End Role="PurchasedDlcDetails" EntitySet="PurchasedDlcDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__GameI__2E1BDC42" Association="Self.FK__Purchased__GameI__2E1BDC42">
+            <End Role="GameDetails" EntitySet="GameDetails" />
+            <End Role="PurchasedGameDetails" EntitySet="PurchasedGameDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__Usern__2F10007B" Association="Self.FK__Purchased__Usern__2F10007B">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="PurchasedGameDetails" EntitySet="PurchasedGameDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__Usern__32E0915F" Association="Self.FK__Purchased__Usern__32E0915F">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="PurchasedDlcDetails" EntitySet="PurchasedDlcDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamexDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DlcDetail">
+          <Key>
+            <PropertyRef Name="DlcId" />
+          </Key>
+          <Property Name="DlcId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DlcName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DlcPrice" Type="Double" />
+          <Property Name="DlcResaleValue" Type="Double" />
+          <Property Name="DlcPurchaseCount" Type="Int32" />
+          <Property Name="GameId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GameDetail" Relationship="Self.FK__DlcDetail__GameI__2B3F6F97" FromRole="DlcDetails" ToRole="GameDetails" />
+          <NavigationProperty Name="PurchasedDlcDetails" Relationship="Self.FK__Purchased__DlcId__31EC6D26" FromRole="DlcDetails" ToRole="PurchasedDlcDetails" />
+        </EntityType>
+        <EntityType Name="GameDetail">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GameGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GamePrice" Type="Double" />
+          <Property Name="GameResaleValue" Type="Double" />
+          <Property Name="GamePurchaseCount" Type="Int32" />
+          <NavigationProperty Name="DlcDetails" Relationship="Self.FK__DlcDetail__GameI__2B3F6F97" FromRole="GameDetails" ToRole="DlcDetails" />
+          <NavigationProperty Name="PurchasedGameDetails" Relationship="Self.FK__Purchased__GameI__2E1BDC42" FromRole="GameDetails" ToRole="PurchasedGameDetails" />
+          <Property Name="GameDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GameImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PurchasedDlcDetail">
+          <Key>
+            <PropertyRef Name="PDiD" />
+          </Key>
+          <Property Name="PDiD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DlcId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DlcDetail" Relationship="Self.FK__Purchased__DlcId__31EC6D26" FromRole="PurchasedDlcDetails" ToRole="DlcDetails" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK__Purchased__Usern__32E0915F" FromRole="PurchasedDlcDetails" ToRole="UserDetails" />
+          <Property Name="InLibraryDlcStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PurchasedGameDetail">
+          <Key>
+            <PropertyRef Name="PGiD" />
+          </Key>
+          <Property Name="PGiD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GameDetail" Relationship="Self.FK__Purchased__GameI__2E1BDC42" FromRole="PurchasedGameDetails" ToRole="GameDetails" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK__Purchased__Usern__2F10007B" FromRole="PurchasedGameDetails" ToRole="UserDetails" />
+          <Property Name="InLibraryGameStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Wallet" Type="Double" />
+          <NavigationProperty Name="PurchasedDlcDetails" Relationship="Self.FK__Purchased__Usern__32E0915F" FromRole="UserDetails" ToRole="PurchasedDlcDetails" />
+          <NavigationProperty Name="PurchasedGameDetails" Relationship="Self.FK__Purchased__Usern__2F10007B" FromRole="UserDetails" ToRole="PurchasedGameDetails" />
+          <Property Name="UserThreatLevel" Type="Int32" />
+          <Property Name="UserBanStatus" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__DlcDetail__GameI__2B3F6F97">
+          <End Role="GameDetails" Type="Self.GameDetail" Multiplicity="0..1" />
+          <End Role="DlcDetails" Type="Self.DlcDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDetails">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="DlcDetails">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__DlcId__31EC6D26">
+          <End Role="DlcDetails" Type="Self.DlcDetail" Multiplicity="0..1" />
+          <End Role="PurchasedDlcDetails" Type="Self.PurchasedDlcDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DlcDetails">
+              <PropertyRef Name="DlcId" />
+            </Principal>
+            <Dependent Role="PurchasedDlcDetails">
+              <PropertyRef Name="DlcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__GameI__2E1BDC42">
+          <End Role="GameDetails" Type="Self.GameDetail" Multiplicity="0..1" />
+          <End Role="PurchasedGameDetails" Type="Self.PurchasedGameDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameDetails">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="PurchasedGameDetails">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__Usern__32E0915F">
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="0..1" />
+          <End Role="PurchasedDlcDetails" Type="Self.PurchasedDlcDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PurchasedDlcDetails">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchased__Usern__2F10007B">
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="0..1" />
+          <End Role="PurchasedGameDetails" Type="Self.PurchasedGameDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PurchasedGameDetails">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamexDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DlcDetails" EntityType="Self.DlcDetail" />
+          <EntitySet Name="GameDetails" EntityType="Self.GameDetail" />
+          <EntitySet Name="PurchasedDlcDetails" EntityType="Self.PurchasedDlcDetail" />
+          <EntitySet Name="PurchasedGameDetails" EntityType="Self.PurchasedGameDetail" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <AssociationSet Name="FK__DlcDetail__GameI__2B3F6F97" Association="Self.FK__DlcDetail__GameI__2B3F6F97">
+            <End Role="GameDetails" EntitySet="GameDetails" />
+            <End Role="DlcDetails" EntitySet="DlcDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__DlcId__31EC6D26" Association="Self.FK__Purchased__DlcId__31EC6D26">
+            <End Role="DlcDetails" EntitySet="DlcDetails" />
+            <End Role="PurchasedDlcDetails" EntitySet="PurchasedDlcDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__GameI__2E1BDC42" Association="Self.FK__Purchased__GameI__2E1BDC42">
+            <End Role="GameDetails" EntitySet="GameDetails" />
+            <End Role="PurchasedGameDetails" EntitySet="PurchasedGameDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__Usern__32E0915F" Association="Self.FK__Purchased__Usern__32E0915F">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="PurchasedDlcDetails" EntitySet="PurchasedDlcDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchased__Usern__2F10007B" Association="Self.FK__Purchased__Usern__2F10007B">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="PurchasedGameDetails" EntitySet="PurchasedGameDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GamexDatabaseModelStoreContainer" CdmEntityContainer="GamexDatabaseEntities">
+          <EntitySetMapping Name="DlcDetails">
+            <EntityTypeMapping TypeName="GamexDatabaseModel.DlcDetail">
+              <MappingFragment StoreEntitySet="DlcDetails">
+                <ScalarProperty Name="DlcId" ColumnName="DlcId" />
+                <ScalarProperty Name="DlcName" ColumnName="DlcName" />
+                <ScalarProperty Name="DlcPrice" ColumnName="DlcPrice" />
+                <ScalarProperty Name="DlcResaleValue" ColumnName="DlcResaleValue" />
+                <ScalarProperty Name="DlcPurchaseCount" ColumnName="DlcPurchaseCount" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameDetails">
+            <EntityTypeMapping TypeName="GamexDatabaseModel.GameDetail">
+              <MappingFragment StoreEntitySet="GameDetails">
+                <ScalarProperty Name="GameImagePath" ColumnName="GameImagePath" />
+                <ScalarProperty Name="GameDescription" ColumnName="GameDescription" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="GameGenre" ColumnName="GameGenre" />
+                <ScalarProperty Name="GamePrice" ColumnName="GamePrice" />
+                <ScalarProperty Name="GameResaleValue" ColumnName="GameResaleValue" />
+                <ScalarProperty Name="GamePurchaseCount" ColumnName="GamePurchaseCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchasedDlcDetails">
+            <EntityTypeMapping TypeName="GamexDatabaseModel.PurchasedDlcDetail">
+              <MappingFragment StoreEntitySet="PurchasedDlcDetails">
+                <ScalarProperty Name="InLibraryDlcStatus" ColumnName="InLibraryDlcStatus" />
+                <ScalarProperty Name="PDiD" ColumnName="PDiD" />
+                <ScalarProperty Name="DlcId" ColumnName="DlcId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchasedGameDetails">
+            <EntityTypeMapping TypeName="GamexDatabaseModel.PurchasedGameDetail">
+              <MappingFragment StoreEntitySet="PurchasedGameDetails">
+                <ScalarProperty Name="InLibraryGameStatus" ColumnName="InLibraryGameStatus" />
+                <ScalarProperty Name="PGiD" ColumnName="PGiD" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="GamexDatabaseModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="UserBanStatus" ColumnName="UserBanStatus" />
+                <ScalarProperty Name="UserThreatLevel" ColumnName="UserThreatLevel" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,63 @@
+﻿@model GamexProject.Models.GameDetail
+
+<br />
+<br />
+<br />
+<br />
+<style>
+    body{
+        background-color : black;
+    }
+    .PurchaseGameBox a
+    {
+        color:grey;
+        text-decoration:none;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    #gameImage
+    {
+        width:100%;
+        height:400px;
+    }
+</style>
+<link href="~/Content/PurchaseGameStyleSheet.css" rel="stylesheet" />
+<div id="backgroundImage">
+    <img src="@Url.Content(Model.GameImagePath)" alt="Your browser doesnt support images" id="gameImage" />
+
+    <div class="PurchaseGameBox" style="text-align:center;border:2px solid grey;color:whitesmoke;">
+        <br />
+            <div id="gamePrice">
+                @Html.Label("Price : ")
+                @Html.DisplayFor(m => m.GamePrice)
+            </div>
+            <br />
+            <div id="gameName">
+                @Html.Label("Game Name : ")
+                @Html.DisplayFor(m => m.GameName)
+            </div>
+            <br />
+            <div id="gameGenre">
+                @Html.Label("Game Genre : ")
+                @Html.DisplayFor(m => m.GameGenre)
+            </div>
+            <br />
+            <div id="gameDescription">
+                @Html.Label("Game Description : ")
+                @Html.DisplayFor(m => m.GameDescription)
+            </div>
+            <br />
+            <div>
+                <nav>
+                    @Html.ActionLink("Purchase Game", "GamePurchased", "User") |
+
+                    @Html.ActionLink("View DLCs", "ViewGameDlcUser", "User")
+                </nav>
+            </div>
+            <br>
+            <div>
+                @ViewBag.Message
+            </div>
+        </div>
+</div>
+
+

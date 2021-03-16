@@ -1,0 +1,96 @@
+﻿@model GamexProject.Models.GameDetail
+
+@{
+    Html.RenderPartial("_AdminNavBar");
+}
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/AddGamesStyleSheet.css" rel="stylesheet" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Games</title>
+</head>
+<body>
+    <div class="background">
+        @using (Html.BeginForm("AddGames", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="addgameBox">
+            <h2 id="heading">Add Game</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GameId, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GameId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GameName, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GameName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GameGenre, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GameGenre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+              <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GamePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GamePrice, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GamePrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameResaleValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GameResaleValue, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GameResaleValue, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GameDescription, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.GameDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="ImageFile" required />
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add Game" class="btn btn-default" id="addgameButton"/>
+                </div>
+            </div>
+            <br />
+            <div>
+                @ViewBag.Message
+            </div>
+        </div>
+        }
+        
+    </div>
+</body>
+</html>

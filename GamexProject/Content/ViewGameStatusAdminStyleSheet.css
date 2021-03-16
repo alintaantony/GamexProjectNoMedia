@@ -1,0 +1,24 @@
+﻿body {
+    margin: 0;
+    background-color: black;
+    background-image: url(../Images/ViewGameStatusAdminImageTwo.jpg);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.tableOfViewGameStatus, td {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    font-family: Tahoma;
+    font-size: 15px;
+    padding: 10px;
+    background-color: black;
+}
+.ViewGameStatusBox {
+    padding: 30px 30px;
+    background-size: cover;
+    align-content: center;
+
+}

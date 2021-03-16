@@ -1,0 +1,31 @@
+﻿body {
+    margin: 0;
+    background-image: url(../Images/ViewGamesAndDlcsMenuImage.jpg);
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.ViewGamesAndDlcMenuBox {
+    width: 100%;
+    height: 150px;
+    color: whitesmoke;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    background-size: cover;
+    text-align:center;
+}
+.ViewGamesAndDlcMenuBox a
+{
+    text-decoration:none;
+    color:darkgrey;
+    font-size:50px;
+     
+
+}

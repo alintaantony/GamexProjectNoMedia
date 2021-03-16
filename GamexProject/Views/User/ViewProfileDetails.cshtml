@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GamexProject.Models.UserDetail>
+
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/ViewProfileDetailsStyleSheet.css" rel="stylesheet" />
+<div class="ViewProfileDetailsBox">
+    @foreach (var item in Model)
+    {
+        <div>
+            <label>Username</label> :
+            @Html.DisplayFor(modelItem => item.Username)
+        </div>
+        <br />
+        <div>
+            <label>Full Name</label> :
+            @Html.DisplayFor(modelItem => item.UserFullName)
+        </div>
+        <br />
+        <div>
+            <label>
+                <label>Email</label> :
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </label>
+        </div>
+        <br />
+        <div>
+            <label>Wallet Balance</label> :
+            @Html.DisplayFor(modelItem => item.Wallet)
+        </div>
+        <br />
+        <div id="linkDiv">
+            @Html.ActionLink("Edit Profile", "EditProfileOfUser", "User")
+        </div>
+
+    }
+</div>
+<div>
+    @ViewBag.Message
+</div>

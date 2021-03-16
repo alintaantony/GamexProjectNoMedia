@@ -1,0 +1,35 @@
+﻿body {
+    margin: 0;
+    background-image: url(../Images/ViewProfileDetailsImage.jpg);
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.ViewProfileDetailsBox {
+    width: 320px;
+    height: 350px;
+    background-color: black;
+    color: whitesmoke;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    background-size: cover;
+    border-radius: 15px;
+    font-size:20px;
+    font-family:Tahoma;
+}
+    .ViewProfileDetailsBox a {
+        text-decoration: none;
+        text-align: center;
+        color:grey; 
+    }
+#linkDiv
+{
+    text-align:center;
+}

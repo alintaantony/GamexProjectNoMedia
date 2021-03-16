@@ -1,0 +1,66 @@
+﻿@model GamexProject.Models.ViewModels.EditProfileOfUserViewModel
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/EditProfileOfUserStyleSheet.css" rel="stylesheet" />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="EditProfileBox">
+        <h2 id="heading">Edit Profile</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserFullName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserFullName, new { htmlAttributes = new { @class = "form-control" } })<br />
+                @Html.ValidationMessageFor(model => model.UserFullName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control" } })<br />
+                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.OldPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.OldPassword, new { htmlAttributes = new { @class = "form-control" } })<br />
+                @Html.ValidationMessageFor(model => model.OldPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })<br />
+                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.CofirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.CofirmPassword, new { htmlAttributes = new { @class = "form-control" } })<br />
+                @Html.ValidationMessageFor(model => model.CofirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Make Changes" class="btn btn-default" id="editProfileButton"/>
+            </div>
+        </div>
+        <br />
+        <div id="notifMessage">
+            @ViewBag.Message
+        </div>
+    </div>
+    }
+
+

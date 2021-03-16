@@ -1,0 +1,75 @@
+﻿@model GamexProject.Models.DlcDetail
+
+@{
+    Html.RenderPartial("_AdminNavBar");
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddDlc</title>
+    <link href="~/Content/AddDlcStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="background">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="addDlcBox">
+            <h2 id="heading">Add DLC</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DlcId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DlcId, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.DlcId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.DlcName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DlcName, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.DlcName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.DlcPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DlcPrice, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.DlcPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.DlcResaleValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DlcResaleValue, new { htmlAttributes = new { @class = "form-control" } })<br />
+                    @Html.ValidationMessageFor(model => model.DlcResaleValue, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GameId, "DLC's Game", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.GameId, ViewBag.gameIdDropDownList as SelectList, "Select Game", new { required = "required" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add DLC" class="btn btn-default" id="addDlcButton"/>
+                </div>
+            </div>
+            <br />
+            <div id="errorMessage">
+                @ViewBag.Message
+            </div>
+        </div>
+        }   
+    </div>
+</body>
+</html>

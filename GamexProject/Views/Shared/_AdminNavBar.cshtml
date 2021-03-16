@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Content/UserNavbarStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+        <ul class="NavBar">
+            <li class="NavBarElement">@Html.ActionLink("HOME","AdminHomePage")</li>
+            <li class="NavBarElement">@Html.ActionLink("ADD GAMES", "AddGames")</li>
+            <li class="NavBarElement">@Html.ActionLink("ADD DLC", "AddDlc")</li>
+            <li class="NavBarElement">@Html.ActionLink("VIEW GAME STATUS", "ViewGameStatus")</li>
+            <li style="float:right" class="NavBarElement">@Html.ActionLink("LOGOUT", "Logout")</li>
+        </ul>
+
+</body>
+</html>

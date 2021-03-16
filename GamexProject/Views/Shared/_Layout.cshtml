@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Content/UserNavbarStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <ul class="NavBar">
+
+        <li class="NavBarElement">@Html.ActionLink("HOME", "UserHomePage", "User")</li>
+        <li class="NavBarElement">@Html.ActionLink("STORE", "ViewGamesToPurchase", "User")</li>
+        <li class="NavBarElement">@Html.ActionLink("LIBRARY", "ViewGameandDlcMenu", "User")</li>
+        <li class="NavBarElement">@Html.ActionLink("RECHARGE WALLET", "RechargeWallet", "User")</li>
+        <li style="float: right"class="NavBarElement">@Html.ActionLink("LOGOUT", "Logout", "User")</li>
+        <li style="float: right"class="NavBarElement">@Html.ActionLink("PROFILE", "ViewProfileDetails", "User")</li>
+    </ul>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

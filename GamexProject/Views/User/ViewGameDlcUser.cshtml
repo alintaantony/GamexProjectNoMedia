@@ -1,0 +1,31 @@
+﻿@model IEnumerable<GamexProject.Models.DlcDetail>
+
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/ViewDLCStyleSheet.css" rel="stylesheet" />
+<div class="ViewDlcBox">
+    @foreach (var item in Model)
+    {
+        <div id="DlcItems">
+            <div>
+                @Html.Label("DLC Name") :
+                @Html.DisplayFor(modelItem => item.DlcName)
+            </div>
+            <div>
+                @Html.Label("DLC Price") :
+                @Html.DisplayFor(modelItem => item.DlcPrice)
+            </div>
+            <nav>
+                <div>
+                    @Html.ActionLink("Purchase DLC", "PurchaseDlc", new { Dlcid = item.DlcId }, null)
+                </div> 
+            </nav>
+        </div>
+
+    }
+    <div>
+        @ViewBag.Message
+    </div>
+</div>
